@@ -39,7 +39,7 @@ The DPR is a parallel structure comprising three upper arms and three lower arms
 ### Delta Parallel Robot Kinematics
 The Inverse Kinematic (IK) of a DPR involves determining the joint configurations needed to achieve a specified end-effector position, while the Forward Kinematic (FK) entails computing the end effector’s position based on the given joint configurations. The main actuators are placed on the three revolute joints which connect the upper arms to the base. The IK model used comes from solving the kinematic closed chain:
 
-$OAi + AiBi + BiCi + CiE + EO = 0$
+$\overline{O A_i}+\overline{A_i B_i}+\overline{B_i C_i}+\overline{C_i E}+\overline{E O}=0$
 
 ### Delta Parallel Robot Trajectory Planning
 Trajectory planning in a DPR involves determining a sequence of desired end-effector positions over time, considering the robot’s kinematics and dynamics, to achieve smooth and efficient motion in its operational space. Assuming proper kinematic modeling, it is feasible to transition trajectory planning calculations from workspace to joint space. With the initial and final states of joint-space configuration represented by $\Theta_I$ and $\Theta_F$, respectively, one can interpolate between these two configurations using a method known as the 4-5-6-7 interpolating polynomial:
@@ -52,7 +52,7 @@ $p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4$
 
 Alternatively, if there are specific points designated as targets along the path (in addition to the initial and final points), the use of cubic splines becomes a viable option. The cubic spline method efficiently interpolates a trajectory through a series of given points. When dealing with $n + 1$ points, $n$ polynomials with distinct parameters are employed to interpolate the entire path. The mathematical definition is as follows:
 
-$p_i (t) = a_i0 + a_i1 (t − t_i) + a_i2 (t − t_i)^2 + a_i3 (t − t_i)^3$
+$p_i(t) = a_{i0} + a_{i1}(t − t_i) + a_{i2}(t − t_i)^2 + a_{i3}(t − t_i)^3$
 
 And the overall path will be defined as:
 

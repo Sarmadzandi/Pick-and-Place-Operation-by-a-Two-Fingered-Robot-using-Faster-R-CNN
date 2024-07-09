@@ -39,7 +39,7 @@ The DPR is a parallel structure comprising three upper arms and three lower arms
 ### Delta Parallel Robot Kinematics
 The Inverse Kinematic (IK) of a DPR involves determining the joint configurations needed to achieve a specified end-effector position, while the Forward Kinematic (FK) entails computing the end effector’s position based on the given joint configurations. The main actuators are placed on the three revolute joints which connect the upper arms to the base. The IK model used comes from solving the kinematic closed chain:
 
-\[ OAi + AiBi + BiCi + CiE + EO = 0 \]
+$OAi + AiBi + BiCi + CiE + EO = 0$
 
 ### Delta Parallel Robot Trajectory Planning
 Trajectory planning in a DPR involves determining a sequence of desired end-effector positions over time, considering the robot’s kinematics and dynamics, to achieve smooth and efficient motion in its operational space. Assuming proper kinematic modeling, it is feasible to transition trajectory planning calculations from workspace to joint space. With the initial and final states of joint-space configuration represented by \( \Theta_I \) and \( \Theta_F \), respectively, one can interpolate between these two configurations using a method known as the 4-5-6-7 interpolating polynomial:

@@ -49,14 +49,8 @@ Furthermore, the table below presents the label corresponding to each chocolate 
 | Tickers | 7 | Label for Tickers chocolate brand |
 | Triperz | 8 | Label for Triperz chocolate brand |
 
-## Features
-
-- **Object Detection**: Utilizing Faster R-CNN to accurately detect the position of chocolates.
-- **Robotic Integration**: Integration with a two-fingered gripper and Delta Parallel Robot for pick-and-place operation.
-- **High Accuracy**: Achieves high accuracy and success rates in detecting and automated pick-and-place operations on practical tests.
-
 ## The Pick-and-place Experimental Setup
-The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. In order to allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
+The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
 
 ### Delta Parallel Robot (DPR) Structure 
 The DPR is a parallel structure comprising three upper arms and three lower arms. Each upper arm connects to the base plate with a revolute joint on one end and to the lower arm with a universal joint on the other end (shown in Fig. 4). The lower arms are connected to the traveling plate using a universal joint. This configuration results in three kinematic chains, yielding 3 DOFs in our specific design. Consequently, the 3 DOF DPR can move along three main axes x, y, and z.

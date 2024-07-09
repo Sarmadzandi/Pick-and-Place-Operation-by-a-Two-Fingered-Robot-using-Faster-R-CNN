@@ -42,22 +42,23 @@ The Inverse Kinematic (IK) of a DPR involves determining the joint configuration
 $OAi + AiBi + BiCi + CiE + EO = 0$
 
 ### Delta Parallel Robot Trajectory Planning
-Trajectory planning in a DPR involves determining a sequence of desired end-effector positions over time, considering the robot’s kinematics and dynamics, to achieve smooth and efficient motion in its operational space. Assuming proper kinematic modeling, it is feasible to transition trajectory planning calculations from workspace to joint space. With the initial and final states of joint-space configuration represented by \( \Theta_I \) and \( \Theta_F \), respectively, one can interpolate between these two configurations using a method known as the 4-5-6-7 interpolating polynomial:
+Trajectory planning in a DPR involves determining a sequence of desired end-effector positions over time, considering the robot’s kinematics and dynamics, to achieve smooth and efficient motion in its operational space. Assuming proper kinematic modeling, it is feasible to transition trajectory planning calculations from workspace to joint space. With the initial and final states of joint-space configuration represented by $\Theta_I$ and $\Theta_F$, respectively, one can interpolate between these two configurations using a method known as the 4-5-6-7 interpolating polynomial:
 
-\[ \Theta(t) = \Theta_I + (\Theta_F - \Theta_I) p(t_{norm}) \]
+$\Theta(t) = \Theta_I + (\Theta_F - \Theta_I) p(t_{norm})$
 
-Where \( t_{norm} \) denotes normalized time, and the interpolating polynomial \( p \) can be expressed as:
+Where $t_{norm}$ denotes normalized time, and the interpolating polynomial $p$ can be expressed as:
 
-\[ p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4 \]
+$p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4$
 
 And the overall path will be defined as:
 
-\[ p_{path}(t) = p_i(t), t \in [t_i, t_{i+1}] \quad 	ext{and} \quad i = 0, \ldots, n-1 \]
+$p_{path}(t) = p_i(t), t \in [t_i, t_{i+1}] \quad 	ext{and} \quad i = 0, \ldots, n-1$
 
-where \( t \) represents the overall time, \( i \) represents the number of polynomials or the number of the current target point, and \( t_i \) is the time when the end-effector will hit the target point number \( i \).
+where $t$ represents the overall time, $i$ represents the number of polynomials or the number of the current target point, and $t_i$ is the time when the end-effector will hit the target point number $i$.
 
 ### 2-Fingered Gripper
 The gripper connected to the end-effector is a 2-fingered design based on US 9,327,411 B2 Robotic Gripper Patent, which is a research-only development with no commercial intent. This design is proficient in securing small items from a multitude of angles parallel to the operational surface. Its conceptual inspiration is drawn from the Hand-E gripper by ROBOTIQ, indicating a homage to its design principles. The operation of the gripper is facilitated through a pinion activated by a stepper motor. This setup actuates two racks, enabling precise manipulation of the fingers’ movement along a linear path. Graphite bushings coupled with hard chrome shafts provide a smooth sliding mechanism for the racks. The chosen stepper motor is the Nema17 HS8401 model, known for its 5.2 kg/cm torque output. It is driven by a TB6600 motor driver, which supports micro-stepping functionality. Incorporated at the tip of the gripper is a Force-Sensitive Resistor (FSR) that operates on the principle of variable resistance, where applied force decreases resistance by bringing a conductive and a non-conductive layer into contact. Resistance measurement is conducted through a basic voltage divider circuit, with calibration capabilities for setting a predefined force threshold necessary for gripping actions. The gripper’s structure, fabricated from heat-resistant ABS plastic, is produced via 3D printing technology, emphasizing durability and design flexibility. Control over the gripper is achieved through serial communication from an Arduino Uno board, facilitating adjustments in the gripper’s aperture and orientation via software. It boasts an expansive opening capacity of up to 60mm, accommodating diverse object sizes. Connection to the Arduino is ensured through a 5-meter shielded cable, guaranteeing stable communication. The software allows for precise control over the gripper’s states, ranging from fully opened to the act of grasping, enabling object manipulation from various angles in a horizontal orientation. The integration of the gripper with the Delta robot’s arms enables coordinated control over the object’s orientation.
+
 
 ------------------------------------------------------------------------------
 

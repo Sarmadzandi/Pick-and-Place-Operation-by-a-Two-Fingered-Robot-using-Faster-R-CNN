@@ -30,7 +30,7 @@ This project aims to utilize Faster R-CNN for the Food Packaging Process, with a
     - **Normalization:** Pixel values are normalized to the range $[0, 1]$.
     - **Applying Filter:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
 
-- **Image Annotation**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated using the Roboflow tool following the PASCAL VOC standard, to accurately outline the boundaries and labels of individual chocolate pieces. This annotation file contains specifics such as the photo file name, photo dimensions (width, height, depth), and information regarding each chocolate in the image such as the chocolate's label and the bounding box coordinates saved as  $(x_{min}, y_{min}, x_{max}, y_{max})$.
+- **Image Annotation**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated using the [Roboflow](https://github.com/roboflow) tool following the PASCAL VOC standard, to accurately outline the boundaries and labels of individual chocolate pieces. This annotation file contains specifics such as the photo file name, photo dimensions (width, height, depth), and information regarding each chocolate in the image such as the chocolate's label and the bounding box coordinates saved as  $(x_{min}, y_{min}, x_{max}, y_{max})$.
 
 The figure below displays a sample of the chocolates, each with its respective pre-processed bounding box and the corresponding label. 
 

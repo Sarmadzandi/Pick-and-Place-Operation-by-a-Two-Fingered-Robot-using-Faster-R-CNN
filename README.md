@@ -39,29 +39,18 @@ The figure below displays a sample of the chocolates, each with its respective p
 
 Furthermore, the table below presents the label corresponding to each chocolate type and its corresponding integer.
 
-\begin{table}[h!]
-\centering
-\caption{Classification of preprocessed labels.}
-\label{tab:TT1}
-\begin{adjustbox}{width=\textwidth}
-\rowcolors{2}{white}{lightgray}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Label} & \textbf{Corresponding Integer} & \textbf{Description} \\
-\bottomrule
-\hline
-Box & 1 & Label for chocolate boxes \\
-Diamond & 2 & Label for Diamond chocolate brand \\
-Domenica Black & 3 & Label for Domenica chocolate brand (black color) \\
-Domenica Blue & 4 & Label for Domenica chocolate brand (blue color) \\
-Section & 5 & Label for compartments in chocolate boxes \\
-Shoniz & 6 & Label for Shoniz chocolate brand \\
-Tickers & 7 & Label for Tickers chocolate brand \\
-Triperz & 8 & Label for Triperz chocolate brand \\
-\hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
+Here is a rewritten version of the table with some improvements:
+
+| **Label** | **Integer** | **Description** |
+| --- | --- | --- |
+| Box | 1 | Label for chocolate boxes |
+| Diamond | 2 | Label for Diamond chocolate brand |
+| Domenica (Black) | 3 | Label for Domenica chocolate brand (black color) |
+| Domenica (Blue) | 4 | Label for Domenica chocolate brand (blue color) |
+| Section | 5 | Label for compartments in chocolate boxes |
+| Shoniz | 6 | Label for Shoniz chocolate brand |
+| Tickers | 7 | Label for Tickers chocolate brand |
+| Triperz | 8 | Label for Triperz chocolate brand |
 
 ## Features
 

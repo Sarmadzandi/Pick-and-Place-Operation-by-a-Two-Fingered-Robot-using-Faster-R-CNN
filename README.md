@@ -25,12 +25,43 @@ This project aims to utilize Faster R-CNN for the Food Packaging Process, with a
 
 - **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with different shapes using the ODROIDUSBCAM 720PHD camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
 
-- **Image and Annotation Details**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated following the PASCAL VOC standard, to define the boundaries and labels of each chocolate piece precisely.
-
-- **Pre-Processing**: Raw images were pre-processed using techniques like filtration and data augmentation to enhance the model's accuracy. These techniques include the following:
+- **Pre-processing**: Raw images were pre-processed using the following techniques:
     - **Uniform Resizing:** Images are resized to $800 \times 600$ pixels.
     - **Normalization:** Pixel values are normalized to the range $[0, 1]$.
     - **Applying Filter:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
+
+- **Image Annotation**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated using the Roboflow tool following the PASCAL VOC standard, to accurately outline the boundaries and labels of individual chocolate pieces. This annotation file contains specifics such as the photo file name, photo dimensions (width, height, depth), and information regarding each chocolate in the image such as the chocolate's label and the bounding box coordinates saved as  $(x_{min}, y_{min}, x_{max}, y_{max})$.
+
+The figure below displays a sample of the chocolates, each with its respective pre-processed bounding box and the corresponding label. 
+
+![img1](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/3829bfa6-d6bf-4685-af28-27ce8999f23d)
+
+
+Furthermore, the table below presents the label corresponding to each chocolate type and its corresponding integer.
+
+\begin{table}[h!]
+\centering
+\caption{Classification of preprocessed labels.}
+\label{tab:TT1}
+\begin{adjustbox}{width=\textwidth}
+\rowcolors{2}{white}{lightgray}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Label} & \textbf{Corresponding Integer} & \textbf{Description} \\
+\bottomrule
+\hline
+Box & 1 & Label for chocolate boxes \\
+Diamond & 2 & Label for Diamond chocolate brand \\
+Domenica Black & 3 & Label for Domenica chocolate brand (black color) \\
+Domenica Blue & 4 & Label for Domenica chocolate brand (blue color) \\
+Section & 5 & Label for compartments in chocolate boxes \\
+Shoniz & 6 & Label for Shoniz chocolate brand \\
+Tickers & 7 & Label for Tickers chocolate brand \\
+Triperz & 8 & Label for Triperz chocolate brand \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 ## Features
 

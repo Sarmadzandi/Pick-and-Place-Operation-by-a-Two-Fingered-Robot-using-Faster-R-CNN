@@ -23,11 +23,13 @@ This project aims to utilize Faster R-CNN for the Food Packaging Process, with a
 
 ## Data Collection
 
-- **Image Collection**: Captured $50$ high-quality images of chocolates from 6 different brands with different shapes using the ODROIDUSBCAM 720PHD camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
+- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with different shapes using the ODROIDUSBCAM 720PHD camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
+
 - **Image and Annotation Details**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated following the PASCAL VOC standard, to define the boundaries and labels of each chocolate piece precisely.
+
 - **Pre-Processing**: Raw images were pre-processed using techniques like filtration and data augmentation to enhance the model's accuracy. These techniques include the following:
-    - **Uniform Resizing:** Images are resized to 800x600 pixels to ensure consistent input dimensions and preserve image quality for better model performance.
-    - **Normalization:** Pixel values are normalized to the range [0, 1] to accelerate the training process and improve model efficiency.
+    - **Uniform Resizing:** Images are resized to $800 \times 600$ pixels.
+    - **Normalization:** Pixel values are normalized to the range $[0, 1]$.
     - **Applying Filter:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
 
 ## Features

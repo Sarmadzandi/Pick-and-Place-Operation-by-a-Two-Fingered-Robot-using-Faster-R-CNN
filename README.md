@@ -34,12 +34,9 @@ This project aims to utilize Faster R-CNN for the Food Packaging Process, with a
 
 The figure below displays a sample of the chocolates, each with its respective pre-processed bounding box and the corresponding label. 
 
-![img1](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/3829bfa6-d6bf-4685-af28-27ce8999f23d)
-
+![img1](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/26268304-17dc-4939-8cd8-273bc660170b)
 
 Furthermore, the table below presents the label corresponding to each chocolate type and its corresponding integer.
-
-Here is a rewritten version of the table with some improvements:
 
 | **Label** | **Integer** | **Description** |
 | --- | --- | --- |

@@ -21,16 +21,17 @@
 
 This project aims to utilize Faster R-CNN for the Food Packaging Process, with a specific focus on packaging various types of chocolates in a factory's production line. The objective is to identify chocolates in images captured by a camera to automate the pick-and-place task using a two-fingered gripper and a delta parallel robot. The primary aim is to enhance the precision and efficacy of detecting and packaging vulnerable soft chocolates during the pick-and-place operation without causing any damage while maintaining stringent hygiene standards and reducing the need for manual labor.
 
+\subsection{جمع‌آوری مجموعه داده}
+
+در فرآیند جمع‌آوری داده‌ها، ابتدا به ثبت تصاویر باکیفیت از شکلات‌های متنوع تحت شرایطی یکسان پرداخته شد تا اطمینان حاصل شود که داده‌ها دارای ثبات و یکنواختی هستند. برای این منظور، مجموعه‌ای از ۱۲ تصویر با استفاده از دوربین \lr{ODROIDUSBCAM 720PHD} و با رزولوشن \lr{$1280\times720$} تهیه شد. این تصاویر شامل شکلات‌هایی از ۶ برند متفاوت بودند که در یک جعبه قرار داشتند و به ایجاد یک مجموعه داده‌ای متوازن کمک کردند. این دوربین که یک دوربین \lr{RGB} است، بر روی بازوی ربات \lr{DPR} نصب شده و تصاویر را از نمای بالا ثبت کرده است. تمامی تصاویر به فرمت \lr{JPEG} ذخیره و فایل‌های نشانه‌گذاری\LTRfootnote{Annotation} مرتبط به فرمت \lr{XML} تولید شدند. این فایل‌ها با استفاده از ابزار \lr{Roboflow} برای تعیین محدوده‌های دقیق هر قطعه شکلات ایجاد شده‌اند. شایان ذکر است که تمامی شکلات‌ها بر روی یک پس‌زمینه یکسان قرار گرفته‌اند تا مدل تنها بر روی شیء مورد نظر تمرکز نماید. علاوه بر این، فایل‌های نشانه‌گذاری مطابق با استاندارد \lr{PASCAL VOC} هستند و مختصات دقیق محدوده‌ها و برچسب‌های مربوط به هر نوع شکلات را فراهم می‌آورند. در نهایت، برای افزایش دقت مدل پیشنهادی، تصاویر خام با پیش‌پردازش‌هایی نظیر فیلتراسیون و روش‌های تقویت داده‌ها آماده‌سازی شدند. در ادامه این فصل، نحوه انجام هر یک از مراحل به طور کامل شرح داده خواهد شد.
+
 ## Features
 
 - **Object Detection**: Utilizing Faster R-CNN to accurately detect the position of chocolates.
 - **Robotic Integration**: Integration with a two-fingered gripper and Delta Parallel Robot for pick-and-place operation.
 - **High Accuracy**: Achieves high accuracy and success rates in detecting and automated pick-and-place operations on practical tests.
 
-
-## Pick-and-place Experimental Setup
-
-### The Pick-and-place Experimental Setup
+## The Pick-and-place Experimental Setup
 The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. In order to allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
 
 ### Delta Parallel Robot (DPR) Structure 
@@ -62,7 +63,6 @@ where $t$ represents the overall time, $i$ represents the number of polynomials 
 
 ### 2-Fingered Gripper
 The gripper connected to the end-effector is a 2-fingered design based on US 9,327,411 B2 Robotic Gripper Patent, which is a research-only development with no commercial intent. This design is proficient in securing small items from a multitude of angles parallel to the operational surface. Its conceptual inspiration is drawn from the Hand-E gripper by ROBOTIQ, indicating a homage to its design principles. The operation of the gripper is facilitated through a pinion activated by a stepper motor. This setup actuates two racks, enabling precise manipulation of the fingers’ movement along a linear path. Graphite bushings coupled with hard chrome shafts provide a smooth sliding mechanism for the racks. The chosen stepper motor is the Nema17 HS8401 model, known for its 5.2 kg/cm torque output. It is driven by a TB6600 motor driver, which supports micro-stepping functionality. Incorporated at the tip of the gripper is a Force-Sensitive Resistor (FSR) that operates on the principle of variable resistance, where applied force decreases resistance by bringing a conductive and a non-conductive layer into contact. Resistance measurement is conducted through a basic voltage divider circuit, with calibration capabilities for setting a predefined force threshold necessary for gripping actions. The gripper’s structure, fabricated from heat-resistant ABS plastic, is produced via 3D printing technology, emphasizing durability and design flexibility. Control over the gripper is achieved through serial communication from an Arduino Uno board, facilitating adjustments in the gripper’s aperture and orientation via software. It boasts an expansive opening capacity of up to 60mm, accommodating diverse object sizes. Connection to the Arduino is ensured through a 5-meter shielded cable, guaranteeing stable communication. The software allows for precise control over the gripper’s states, ranging from fully opened to the act of grasping, enabling object manipulation from various angles in a horizontal orientation. The integration of the gripper with the Delta robot’s arms enables coordinated control over the object’s orientation.
-
 
 ------------------------------------------------------------------------------
 

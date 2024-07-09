@@ -50,9 +50,13 @@ Where $t_{norm}$ denotes normalized time, and the interpolating polynomial $p$ c
 
 $p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4$
 
+Alternatively, if there are specific points designated as targets along the path (in addition to the initial and final points), the use of cubic splines becomes a viable option. The cubic spline method efficiently interpolates a trajectory through a series of given points. When dealing with $n + 1$ points, $n$ polynomials with distinct parameters are employed to interpolate the entire path. The mathematical definition is as follows:
+
+$p_i (t) = a_i0 + a_i1 (t − t_i) + a_i2 (t − t_i)^2 + a_i3 (t − t_i)^3$
+
 And the overall path will be defined as:
 
-$p_{path}(t) = p_i(t), t \in [t_i, t_{i+1}] \quad 	ext{and} \quad i = 0, \ldots, n-1$
+$p_{path}(t) = p_i(t), t \in [t_i, t_{i+1}] \quad and \quad i = 0, \ldots, n-1$
 
 where $t$ represents the overall time, $i$ represents the number of polynomials or the number of the current target point, and $t_i$ is the time when the end-effector will hit the target point number $i$.
 

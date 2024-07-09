@@ -21,9 +21,14 @@
 
 This project aims to utilize Faster R-CNN for the Food Packaging Process, with a specific focus on packaging various types of chocolates in a factory's production line. The objective is to identify chocolates in images captured by a camera to automate the pick-and-place task using a two-fingered gripper and a delta parallel robot. The primary aim is to enhance the precision and efficacy of detecting and packaging vulnerable soft chocolates during the pick-and-place operation without causing any damage while maintaining stringent hygiene standards and reducing the need for manual labor.
 
-\subsection{جمع‌آوری مجموعه داده}
+## Data Collection
 
-در فرآیند جمع‌آوری داده‌ها، ابتدا به ثبت تصاویر باکیفیت از شکلات‌های متنوع تحت شرایطی یکسان پرداخته شد تا اطمینان حاصل شود که داده‌ها دارای ثبات و یکنواختی هستند. برای این منظور، مجموعه‌ای از ۱۲ تصویر با استفاده از دوربین \lr{ODROIDUSBCAM 720PHD} و با رزولوشن \lr{$1280\times720$} تهیه شد. این تصاویر شامل شکلات‌هایی از ۶ برند متفاوت بودند که در یک جعبه قرار داشتند و به ایجاد یک مجموعه داده‌ای متوازن کمک کردند. این دوربین که یک دوربین \lr{RGB} است، بر روی بازوی ربات \lr{DPR} نصب شده و تصاویر را از نمای بالا ثبت کرده است. تمامی تصاویر به فرمت \lr{JPEG} ذخیره و فایل‌های نشانه‌گذاری\LTRfootnote{Annotation} مرتبط به فرمت \lr{XML} تولید شدند. این فایل‌ها با استفاده از ابزار \lr{Roboflow} برای تعیین محدوده‌های دقیق هر قطعه شکلات ایجاد شده‌اند. شایان ذکر است که تمامی شکلات‌ها بر روی یک پس‌زمینه یکسان قرار گرفته‌اند تا مدل تنها بر روی شیء مورد نظر تمرکز نماید. علاوه بر این، فایل‌های نشانه‌گذاری مطابق با استاندارد \lr{PASCAL VOC} هستند و مختصات دقیق محدوده‌ها و برچسب‌های مربوط به هر نوع شکلات را فراهم می‌آورند. در نهایت، برای افزایش دقت مدل پیشنهادی، تصاویر خام با پیش‌پردازش‌هایی نظیر فیلتراسیون و روش‌های تقویت داده‌ها آماده‌سازی شدند. در ادامه این فصل، نحوه انجام هر یک از مراحل به طور کامل شرح داده خواهد شد.
+- **Image Collection**: Captured $50$ high-quality images of chocolates from 6 different brands with different shapes using the ODROIDUSBCAM 720PHD camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
+- **Image and Annotation Details**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated following the PASCAL VOC standard, to define the boundaries and labels of each chocolate piece precisely.
+- **Pre-Processing**: Raw images were pre-processed using techniques like filtration and data augmentation to enhance the model's accuracy. These techniques include the following:
+    - **Uniform Resizing:** Images are resized to 800x600 pixels to ensure consistent input dimensions and preserve image quality for better model performance.
+    - **Normalization:** Pixel values are normalized to the range [0, 1] to accelerate the training process and improve model efficiency.
+    - **Applying Filter:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
 
 ## Features
 

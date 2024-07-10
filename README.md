@@ -49,6 +49,21 @@ Furthermore, the table below presents the label corresponding to each chocolate 
 | Tickers | 7 | Label for Tickers chocolate brand |
 | Triperz | 8 | Label for Triperz chocolate brand |
 
+- **Data Augmentation**: It's important to increase the amount of data in the dataset to expand its size and ensure reasonable diversity. This is crucial for improving the model's ability to generalize because it was not possible to collect data to cover all scenarios, different lighting conditions, and various positions of chocolates in the environment. Therefore, it's necessary to increase the amount of data in this process. To achieve this, the [Albumentations](https://github.com/albumentations-team/albumentations) library and various augmentation methods have been used, which are detailed in the table below.
+
+| **No.** | **Method**                | **Description**                                                                                                                                        |
+|---------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1       | Horizontal and Vertical Flipping | Creating horizontal and vertical mirror versions of the original images to increase dataset diversity and help in identifying objects in different orientations. |
+| 2       | Random Rotation            | Rotating images to random angles between 90, 180, and 270 degrees to simulate different positions of chocolates and aid in recognition from any angle.   |
+| 3       | Brightness and Color Adjustment | Modifying the brightness, contrast, and color of images to simulate various lighting conditions and increase model resilience to changes like shadows and reflections. |
+| 4       | Adding Noise               | Adding random noise and Gaussian noise to images to make the model more robust against real-world defects like camera noise and dust on the lens.        |
+| 5       | Scaling and Rescaling      | Randomly adjusting the size of images to simulate different distances and scales, helping the model recognize objects at various scales and resolutions.  |
+| 6       | Combined Method            | Applying multiple augmentation methods in combination to create a rich and diverse training set, enhancing the model's robustness and generalization capability. |
+
+Moreover, the figure below shows an example of applying each of the data augmentation methods on a sample image of the dataset.
+
+![img2](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/41639197-4e97-4bd3-8377-8ddc957c92b5)
+
 ## The Pick-and-place Experimental Setup
 The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
 

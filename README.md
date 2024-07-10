@@ -21,9 +21,9 @@
 
 This project aims to use the Faster R-CNN object detection model for the Food Packaging Process, with a specific focus on packaging various types of chocolates in a factory's production line. The objective is to identify chocolates in images captured by a camera to automate the pick-and-place task using a two-fingered gripper and a delta parallel robot. The primary aim is to enhance the precision and efficacy of detecting and packaging vulnerable soft chocolates during the pick-and-place operation without causing any damage while maintaining stringent hygiene standards and reducing the need for manual labor.
 
-## Data Collection
+## Data Collection and Pre-Processing
 
-- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with different shapes using the [ODROID USB CAM 720PHD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
+- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with varying shapes using the [ODROID USB CAM 720PHD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a consistent background to ensure the model focused only on the target objects. 
 
 - **Pre-processing**: Raw images were pre-processed using the following techniques:
     - **Uniform Resizing:** Images are resized to $800 \times 600$ pixels.
@@ -60,7 +60,7 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
     | 5       | Scaling and Rescaling      | Randomly adjusting the size of images to simulate different distances and scales, helping the model recognize objects at various scales and resolutions.  |
     | 6       | Combined Method            | Applying multiple augmentation methods in combination to create a rich and diverse training set, enhancing the model's robustness and generalization capability. |
     
-    Moreover, the figure below shows an example of applying each of the data augmentation methods on a sample image of the dataset.
+    Moreover, the figure below shows an example of applying each data augmentation technique on a sample image from the dataset.
     
     ![img2](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/41639197-4e97-4bd3-8377-8ddc957c92b5)
 

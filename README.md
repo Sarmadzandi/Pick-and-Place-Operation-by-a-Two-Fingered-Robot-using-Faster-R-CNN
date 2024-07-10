@@ -27,11 +27,11 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 
     | **Label** | **Integer** | **Description** |
     | --- | --- | --- |
-    | Box | 1 | Label identifier for chocolate boxes |
-    | Diamond | 2 | Label identifier for chocolate brand |
-    | Domenica (Black) | 3 | Label identifier for Domenica chocolate brand (black color) |
-    | Domenica (Blue) | 4 | Label identifier for Domenica chocolate brand (blue color) |
-    | Section | 5 | Label identifier for compartments in chocolate boxes |
+    | Box | 1 | Label identifier for Chocolate Box |
+    | Diamond | 2 | Label identifier for Diamond chocolate brand |
+    | Domenica (Black) | 3 | Label identifier for Domenica chocolate brand (black) |
+    | Domenica (Blue) | 4 | Label identifier for Domenica chocolate brand (blue) |
+    | Section | 5 | Label identifier for compartments in Chocolate Box |
     | Shoniz | 6 | Label identifier for Shoniz chocolate brand |
     | Tickers | 7 | Label identifier for Tickers chocolate brand |
     | Triperz | 8 | Label identifier for Triperz chocolate brand |

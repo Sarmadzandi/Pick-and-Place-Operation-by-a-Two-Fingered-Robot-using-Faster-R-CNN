@@ -69,7 +69,7 @@ The initial setup includes a partially filled box in a random position and orien
       alt="Image 2"
       width="200"
     />
-    <figcaption>The Robot Workspace at the Human and Robot Interaction Laboratory, University of Tehran.</figcaption>
+    <figcaption>The Robot Workspace</figcaption>
   </figure>
 </div>
 

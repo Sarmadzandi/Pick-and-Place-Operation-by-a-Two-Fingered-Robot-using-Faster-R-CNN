@@ -54,9 +54,10 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 ## The Pick-and-place Experimental Setup
 The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
 
-| --- | --- | --- |
-| ![img3](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/35022709-8f89-460a-8bce-17a879b6cc8b) | ![img4](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/f3324181-030b-49a6-ae18-cbc2f291a15b) | ![img5](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/d5800496-47bb-4e42-90ad-6e808dc0745a) |
-| Diamond | 2 | Label identifier for Diamond chocolate brand |
+| --- | --- |
+| ![image](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092) | ![img5](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9) |
+| Delta Parallel Robot and 2-fingered Gripper | Human and Robot
+Interaction Laboratory, University of Tehran. |
 
 ### Delta Parallel Robot (DPR) Structure 
 The DPR is a parallel structure comprising three upper arms and three lower arms. Each upper arm connects to the base plate with a revolute joint on one end and to the lower arm with a universal joint on the other end (shown in Fig. 4). The lower arms are connected to the traveling plate using a universal joint. This configuration results in three kinematic chains, yielding 3 DOFs in our specific design. Consequently, the 3 DOF DPR can move along three main axes x, y, and z.

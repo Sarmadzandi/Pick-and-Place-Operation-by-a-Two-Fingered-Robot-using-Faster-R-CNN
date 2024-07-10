@@ -56,7 +56,7 @@ The initial setup includes a partially filled box in a random position and orien
 
 <div style="display: flex; justify-content: center;">
   <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092" alt="Image 1" style="width: 49%; margin: 0 1%;"/>
-  <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9" alt="Image 2" style="width: 49%; margin: 0 1%;"/>
+  <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9" alt="Image 2" style="width: 39%; margin: 0 1%;"/>
 </div>
 * Delta Parallel Robot and 2-fingered Gripper - Human and Robot Interaction Laboratory, University of Tehran.*
 

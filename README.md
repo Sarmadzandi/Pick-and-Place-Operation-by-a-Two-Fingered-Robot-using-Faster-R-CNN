@@ -9,8 +9,8 @@
 
 This project aims to use the Faster R-CNN object detection model for the Food Packaging Process, with a specific focus on packaging various types of chocolates in a factory's production line. The objective is to identify chocolates in images captured by a camera to automate the pick-and-place task using a two-fingered gripper and a delta parallel robot. The primary aim is to enhance the precision and efficacy of detecting and packaging vulnerable soft chocolates during the pick-and-place operation without causing any damage while maintaining stringent hygiene standards and reducing the need for manual labor.
 
+---
 ## Data Collection and Pre-Processing
-
 - **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with varying shapes using the [ODROID USB CAM 720P HD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a consistent background to ensure the model focused only on the target objects. 
 
 - **Pre-processing**: Raw images were pre-processed using the following techniques:
@@ -18,7 +18,20 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
     - **Normalization:** Pixel values are normalized to the range $[0, 1]$.
     - **Filtering:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
 
-- **Image Annotation**: The images were captured by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was paired with XML annotation files created using the [Roboflow](https://github.com/roboflow) tool adhering to the PASCAL VOC standard to precisely delineate the boundaries and labels of individual chocolate pieces. This annotation file includes details like the image file name, dimensions (width, height, depth), and specifics about each chocolate in the image such as its label and the bounding box coordinates recorded as $(x_{min}, y_{min}, x_{max}, y_{max})$.
+- **Image Annotation**: The images were captured by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was paired with XML annotation files created using the [Roboflow](https://github.com/roboflow) annotation tool adhering to the PASCAL VOC standard to precisely delineate the boundaries and labels of individual chocolate pieces. This annotation file includes details like the image file name, dimensions (width, height, depth), and specifics about each chocolate in the image such as its label and the bounding box coordinates recorded as $(x_{min}, y_{min}, x_{max}, y_{max})$.
+
+    > The dataset directory is Structured as follows:
+   ```
+   dataset/
+       images/
+           img1.jpg
+           img2.jpg
+           ...
+       annotations/
+           img1.xml
+           img2.xml
+           ...
+   ```
 
     The figure below displays a sample of the chocolates, each with its respective pre-processed bounding box and the corresponding label. 
 
@@ -51,9 +64,9 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
     Moreover, the figure below shows an example of applying each data augmentation technique on a sample image from the dataset.
     
     ![img2](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/41639197-4e97-4bd3-8377-8ddc957c92b5)
-
-## The Pick-and-place Experimental Setup
-The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
+---
+## Delta Parallel Robot (DPR) Structure and Components
+The Delta Parallel Robot (DPR) workspace (shown in the figure below), consists of a parallel configuration with three upper and three lower arms. Each upper arm connects to the base plate via a revolute joint and to the lower arm with a universal joint. The lower arms connect to a traveling plate using another universal joint, forming three kinematic chains that provide 3 degrees of freedom (DOF) along the x, y, and z axes.
 
 <div style="text-align: center;">
   <table style="margin: 0 auto; border-spacing: 10px;">
@@ -68,38 +81,36 @@ The initial setup includes a partially filled box in a random position and orien
   </table>
 </div>
 
-### Delta Parallel Robot (DPR) Structure 
-The DPR is a parallel structure comprising three upper arms and three lower arms. Each upper arm connects to the base plate with a revolute joint on one end and to the lower arm with a universal joint on the other end (shown in Fig. 4). The lower arms are connected to the traveling plate using a universal joint. This configuration results in three kinematic chains, yielding 3 DOFs in our specific design. Consequently, the 3 DOF DPR can move along three main axes x, y, and z.
+### DPR Kinematics
+- **Inverse Kinematics (IK)**: Determines joint configurations for a desired end-effector position.
+- **Forward Kinematics (FK)**: Computes the end-effector's position based on given joint configurations.
+- The main actuators are on the revolute joints connecting the upper arms to the base.
+- IK is modeled using the equation: $\overline{O A_i}+\overline{A_i B_i}+\overline{B_i C_i}+\overline{C_i E}+\overline{E O}=0$.
 
-### Delta Parallel Robot Kinematics
-The Inverse Kinematic (IK) of a DPR involves determining the joint configurations needed to achieve a specified end-effector position, while the Forward Kinematic (FK) entails computing the end effector’s position based on the given joint configurations. The main actuators are placed on the three revolute joints which connect the upper arms to the base. The IK model used comes from solving the kinematic closed chain:
+### DPR Trajectory Planning
+Trajectory planning involves calculating a sequence of end-effector positions over time for smooth motion. This involves:
+- Transitioning from workspace to joint space.
+- Interpolating between initial and final joint configurations $\Theta_I$ and $\Theta_F$ using a 4-5-6-7 polynomial: 
+  $\Theta(t) = \Theta_I + (\Theta_F - \Theta_I) p(t_{norm})$
+  where $p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4$.
+- Alternatively, cubic splines can interpolate a trajectory through multiple target points:
+  $p_i(t) = a_{i0} + a_{i1}(t − t_i) + a_{i2}(t − t_i)^2 + a_{i3}(t − t_i)^3$
+  for $t \in [t_i, t_{i+1}]$.
 
-$\overline{O A_i}+\overline{A_i B_i}+\overline{B_i C_i}+\overline{C_i E}+\overline{E O}=0$
+## 2-Fingered Gripper
+The 2-fingered gripper attached to the DPR is based on the US 9,327,411 B2 Robotic Gripper Patent and Hand-E gripper by ROBOTIQ. Key features include:
+- **Design**: Facilitates gripping small items from various angles using a pinion and rack mechanism powered by a Nema17 HS8401 stepper motor.
+- **Components**: Utilizes graphite bushings, hard chrome shafts, and a Force-Sensitive Resistor (FSR) to measure grip force.
+- **Fabrication**: Made from heat-resistant ABS plastic via 3D printing.
+- **Control**: Operated through an Arduino Uno with serial communication, offering precise control over the gripper’s aperture and orientation. It has a maximum opening of 60mm and uses a 5-meter shielded cable for stable communication.
 
-### Delta Parallel Robot Trajectory Planning
-Trajectory planning in a DPR involves determining a sequence of desired end-effector positions over time, considering the robot’s kinematics and dynamics, to achieve smooth and efficient motion in its operational space. Assuming proper kinematic modeling, it is feasible to transition trajectory planning calculations from workspace to joint space. With the initial and final states of joint-space configuration represented by $\Theta_I$ and $\Theta_F$, respectively, one can interpolate between these two configurations using a method known as the 4-5-6-7 interpolating polynomial:
+The integration of this gripper with the DPR enables coordinated object manipulation and orientation, enhancing the robot's functional versatility.
 
-$\Theta(t) = \Theta_I + (\Theta_F - \Theta_I) p(t_{norm})$
+---
+## The Pick-and-place Experimental Setup
+The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace. The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial or cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be transmitted wirelessly to the robot using the Transmission Control Protocol (TCP).
 
-Where $t_{norm}$ denotes normalized time, and the interpolating polynomial $p$ can be expressed as:
-
-$p(t) = -20t^7 + 70t^6 - 84t^5 + 35t^4$
-
-Alternatively, if there are specific points designated as targets along the path (in addition to the initial and final points), the use of cubic splines becomes a viable option. The cubic spline method efficiently interpolates a trajectory through a series of given points. When dealing with $n + 1$ points, $n$ polynomials with distinct parameters are employed to interpolate the entire path. The mathematical definition is as follows:
-
-$p_i(t) = a_{i0} + a_{i1}(t − t_i) + a_{i2}(t − t_i)^2 + a_{i3}(t − t_i)^3$
-
-And the overall path will be defined as:
-
-$p_{path}(t) = p_i(t), t \in [t_i, t_{i+1}] \quad and \quad i = 0, \ldots, n-1$
-
-where $t$ represents the overall time, $i$ represents the number of polynomials or the number of the current target point, and $t_i$ is the time when the end-effector will hit the target point number $i$.
-
-### 2-Fingered Gripper
-The gripper connected to the end-effector is a 2-fingered design based on US 9,327,411 B2 Robotic Gripper Patent, which is a research-only development with no commercial intent. This design is proficient in securing small items from a multitude of angles parallel to the operational surface. Its conceptual inspiration is drawn from the Hand-E gripper by ROBOTIQ, indicating a homage to its design principles. The operation of the gripper is facilitated through a pinion activated by a stepper motor. This setup actuates two racks, enabling precise manipulation of the fingers’ movement along a linear path. Graphite bushings coupled with hard chrome shafts provide a smooth sliding mechanism for the racks. The chosen stepper motor is the Nema17 HS8401 model, known for its 5.2 kg/cm torque output. It is driven by a TB6600 motor driver, which supports micro-stepping functionality. Incorporated at the tip of the gripper is a Force-Sensitive Resistor (FSR) that operates on the principle of variable resistance, where applied force decreases resistance by bringing a conductive and a non-conductive layer into contact. Resistance measurement is conducted through a basic voltage divider circuit, with calibration capabilities for setting a predefined force threshold necessary for gripping actions. The gripper’s structure, fabricated from heat-resistant ABS plastic, is produced via 3D printing technology, emphasizing durability and design flexibility. Control over the gripper is achieved through serial communication from an Arduino Uno board, facilitating adjustments in the gripper’s aperture and orientation via software. It boasts an expansive opening capacity of up to 60mm, accommodating diverse object sizes. Connection to the Arduino is ensured through a 5-meter shielded cable, guaranteeing stable communication. The software allows for precise control over the gripper’s states, ranging from fully opened to the act of grasping, enabling object manipulation from various angles in a horizontal orientation. The integration of the gripper with the Delta robot’s arms enables coordinated control over the object’s orientation.
-
-------------------------------------------------------------------------------
-
+---
 ## Contents
 
 - `Faster R-CNN-[Chocolate Detection].ipynb`: Jupyter notebook containing the implementation of the Faster R-CNN model for chocolate detection.

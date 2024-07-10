@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Data Collection and Pre-Processing](#Data-Collection-and-Pre-Processing)
+3. 
 
 ## Project Overview
 
@@ -66,7 +67,6 @@ The initial setup includes a partially filled box in a random position and orien
     </tr>
   </table>
 </div>
-
 
 ### Delta Parallel Robot (DPR) Structure 
 The DPR is a parallel structure comprising three upper arms and three lower arms. Each upper arm connects to the base plate with a revolute joint on one end and to the lower arm with a universal joint on the other end (shown in Fig. 4). The lower arms are connected to the traveling plate using a universal joint. This configuration results in three kinematic chains, yielding 3 DOFs in our specific design. Consequently, the 3 DOF DPR can move along three main axes x, y, and z.

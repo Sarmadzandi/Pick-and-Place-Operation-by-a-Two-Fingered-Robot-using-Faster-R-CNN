@@ -54,6 +54,7 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 ## The Pick-and-place Experimental Setup
 The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace (depicted in Fig. 1, 2, and Fig. 3). The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial and cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be wirelessly transmitted to the robot utilizing the Transmission Control Protocol (TCP). 
 
+| **Label** | **Integer** |
 | --- | --- |
 | ![image](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092) | ![img5](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9) |
 | Delta Parallel Robot and 2-fingered Gripper | Human and Robot

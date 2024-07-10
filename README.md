@@ -2,20 +2,7 @@
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
-2. [Project Background](#project-background)
-3. [Features](#features)
-4. [Contents](#contents)
-5. [Requirements](#requirements)
-6. [Installation](#installation)
-7. [Data Preparation](#data-preparation)
-8. [Usage](#usage)
-    - [Training the Model](#training-the-model)
-    - [Testing the Model](#testing-the-model)
-9. [Results](#results)
-10. [Detailed Information](#detailed-information)
-11. [Contributing](#contributing)
-12. [License](#license)
-13. [Acknowledgments](#acknowledgments)
+2. [Project Background](#Data-Collection-and-Pre-Processing)
 
 ## Project Overview
 
@@ -23,14 +10,14 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 
 ## Data Collection and Pre-Processing
 
-- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with varying shapes using the [ODROID USB CAM 720PHD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a consistent background to ensure the model focused only on the target objects. 
+- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with varying shapes using the [ODROID USB CAM 720P HD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a consistent background to ensure the model focused only on the target objects. 
 
 - **Pre-processing**: Raw images were pre-processed using the following techniques:
-    - **Uniform Resizing:** Images are resized to $800 \times 600$ pixels.
+    - **Resizing:** Images are resized to $800 \times 600$ pixels.
     - **Normalization:** Pixel values are normalized to the range $[0, 1]$.
-    - **Applying Filter:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
+    - **Filtering:** Sharpening and blurring filters are applied in sequence to enhance images and reduce noise.
 
-- **Image Annotation**: The top-view images were recorded by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was accompanied by XML annotation files, generated using the [Roboflow](https://github.com/roboflow) tool following the PASCAL VOC standard, to accurately outline the boundaries and labels of individual chocolate pieces. This annotation file contains specifics such as the photo file name, photo dimensions (width, height, depth), and information regarding each chocolate in the image such as the chocolate's label and the bounding box coordinates saved as  $(x_{min}, y_{min}, x_{max}, y_{max})$.
+- **Image Annotation**: The images were captured by an RGB camera mounted on a robotic arm and saved in JPEG format. Each image was paired with XML annotation files created using the [Roboflow](https://github.com/roboflow) tool adhering to the PASCAL VOC standard to precisely delineate the boundaries and labels of individual chocolate pieces. This annotation file includes details like the image file name, dimensions (width, height, depth), and specifics about each chocolate in the image such as its label and the bounding box coordinates recorded as $(x_{min}, y_{min}, x_{max}, y_{max})$.
 
     The figure below displays a sample of the chocolates, each with its respective pre-processed bounding box and the corresponding label. 
 
@@ -40,14 +27,14 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 
     | **Label** | **Integer** | **Description** |
     | --- | --- | --- |
-    | Box | 1 | Label for chocolate boxes |
-    | Diamond | 2 | Label for Diamond chocolate brand |
-    | Domenica (Black) | 3 | Label for Domenica chocolate brand (black color) |
-    | Domenica (Blue) | 4 | Label for Domenica chocolate brand (blue color) |
-    | Section | 5 | Label for compartments in chocolate boxes |
-    | Shoniz | 6 | Label for Shoniz chocolate brand |
-    | Tickers | 7 | Label for Tickers chocolate brand |
-    | Triperz | 8 | Label for Triperz chocolate brand |
+    | Box | 1 | Label identifier for chocolate boxes |
+    | Diamond | 2 | Label identifier for chocolate brand |
+    | Domenica (Black) | 3 | Label identifier for Domenica chocolate brand (black color) |
+    | Domenica (Blue) | 4 | Label identifier for Domenica chocolate brand (blue color) |
+    | Section | 5 | Label identifier for compartments in chocolate boxes |
+    | Shoniz | 6 | Label identifier for Shoniz chocolate brand |
+    | Tickers | 7 | Label identifier for Tickers chocolate brand |
+    | Triperz | 8 | Label identifier for Triperz chocolate brand |
 
 - **Data Augmentation**: It's important to increase the amount of data in the dataset to expand its size and ensure reasonable diversity. This is crucial for improving the model's ability to generalize because it was not possible to collect data to cover all scenarios, different lighting conditions, and various positions of chocolates in the environment. Therefore, it's necessary to increase the amount of data in this process. To achieve this, the [Albumentations](https://github.com/albumentations-team/albumentations) library and various augmentation methods have been used, which are detailed in the table below.
 

@@ -1,4 +1,4 @@
-# Pick-and-place Operation by a two-fingered Robot using Faster R-CNN
+# Pick-and-place Operation by a Two-fingered Robot using Faster R-CNN
 
 ## Table of Contents
 1. [Project Overview](#project-overview)

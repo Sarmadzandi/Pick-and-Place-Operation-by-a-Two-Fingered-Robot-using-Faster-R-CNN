@@ -23,7 +23,7 @@ This project aims to utilize Faster R-CNN for the Food Packaging Process, with a
 
 ## Data Collection
 
-- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with different shapes using the ODROIDUSBCAM 720PHD camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
+- **Image Collection**: Captured $50$ high-quality images of chocolates from $6$ different brands with different shapes using the [ODROID USB CAM 720PHD](https://en.odroid.se/products/usb-kamera-720p) camera with a resolution of $1280 \times 720$. All chocolates were placed on a uniform background to ensure the model focused solely on the target object. 
 
 - **Pre-processing**: Raw images were pre-processed using the following techniques:
     - **Uniform Resizing:** Images are resized to $800 \times 600$ pixels.

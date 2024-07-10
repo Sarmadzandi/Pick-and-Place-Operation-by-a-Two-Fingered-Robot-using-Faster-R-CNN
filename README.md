@@ -56,7 +56,7 @@ The initial setup includes a partially filled box in a random position and orien
 
 <div style="display: flex; justify-content: space-around;">
   <figure style="margin: 0 20px;">
-    <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092)" alt="Image 1" width="400"/>
+    <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092)" alt="Image 1" width="250"/>
     <figcaption>Delta Parallel Robot and 2-fingered Gripper.</figcaption>
   </figure>
   <figure style="margin: 0 20px;">

@@ -57,7 +57,7 @@ The initial setup includes a partially filled box in a random position and orien
 | **Label** | **Integer** |
 | --- | --- |
 | ![image](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092) | ![img5](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9) |
-| Delta Parallel Robot and 2-fingered Gripper - Human and Robot Interaction Laboratory, University of Tehran. |
+| Delta Parallel Robot and 2-fingered Gripper - Human and Robot Interaction Laboratory, University of Tehran.
 
 ### Delta Parallel Robot (DPR) Structure 
 The DPR is a parallel structure comprising three upper arms and three lower arms. Each upper arm connects to the base plate with a revolute joint on one end and to the lower arm with a universal joint on the other end (shown in Fig. 4). The lower arms are connected to the traveling plate using a universal joint. This configuration results in three kinematic chains, yielding 3 DOFs in our specific design. Consequently, the 3 DOF DPR can move along three main axes x, y, and z.

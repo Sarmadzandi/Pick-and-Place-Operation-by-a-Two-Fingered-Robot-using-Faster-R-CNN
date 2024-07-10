@@ -58,14 +58,11 @@ The initial setup includes a partially filled box in a random position and orien
   <table style="margin: 0 auto; border-spacing: 10px;">
     <tr>
       <td style="padding: 10px;">
-        <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/1ed65adb-e589-47bd-a16a-4277118cd092" alt="Image 1" style="max-width: 50%; height: auto;"/>
-      </td>
-      <td style="padding: 10px;">
-        <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/359ac40b-ba53-4d81-ad35-b2a5724b91a9" alt="Image 2" style="max-width: 100%; height: auto;"/>
+        <img src="https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/6e399814-9d1b-4d00-ae05-51d4743d0b0b" alt="Delta Parallel Robot and 2-fingered Gripper" style="width: 100%; height: auto; vertical-align: top;"/>
       </td>
     </tr>
     <tr>
-      <td colspan="2" style="text-align: center;">Delta Parallel Robot and 2-fingered Gripper - Human and Robot Interaction Laboratory, University of Tehran.</td>
+      <td style="text-align: center;">Delta Parallel Robot and 2-fingered Gripper - Human and Robot Interaction Laboratory, University of Tehran.</td>
     </tr>
   </table>
 </div>

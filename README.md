@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
-2. [Project Background](#Data-Collection-and-Pre-Processing)
+2. [Data Collection and Pre-Processing](#Data-Collection-and-Pre-Processing)
 
 ## Project Overview
 

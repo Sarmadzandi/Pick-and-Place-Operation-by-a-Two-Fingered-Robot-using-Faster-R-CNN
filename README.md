@@ -64,6 +64,9 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
     Moreover, the figure below shows an example of applying each data augmentation technique on a sample image from the dataset.
     
     ![img2](https://github.com/Sarmadzandi/Faster-R-CNN/assets/44917340/41639197-4e97-4bd3-8377-8ddc957c92b5)
+
+The **Data Augmentation** script in the `Faster R-CNN-[Chocolate Detection].ipynb` Jupyter Notebook provides a comprehensive data augmentation and preparation pipeline for the original images. It utilizes the *Roboflow API* to access the annotated dataset, uses *Albumentations* for image augmentations, and splits the augmented images into training, validation, and test sets. This process significantly increased the size and diversity of the dataset and also improved the generalization of the Faster R-CNN object detection model.
+
 ---
 ## Delta Parallel Robot (DPR) Structure and Components
 The Delta Parallel Robot (DPR) workspace (shown in the figure below), consists of a parallel configuration with three upper and three lower arms. Each upper arm connects to the base plate via a revolute joint and to the lower arm with a universal joint. The lower arms connect to a traveling plate using another universal joint, forming three kinematic chains that provide 3 degrees of freedom (DOF) along the x, y, and z axes.

@@ -108,7 +108,7 @@ This architecture is visually illustrated in the figure below, and it successful
 
 ## Data Preparation for Model Training
 
-The dataset for training the Faster R-CNN model is divided into three subsets: training, validation, and test sets. Each subset which makes up 60%, 20%, and 20% of the dataset, respectively, contains images and corresponding annotations, which define the bounding boxes and labels for the objects present in the images. 
+The dataset for training the Faster R-CNN model is divided into three subsets: training, validation, and test sets. Each subset which makes up 60%, 20%, and 20% of the dataset, respectively, contains images and corresponding annotations, which define the bounding boxes and labels for the objects present in the images. The **Data Preparation** script in the `Faster R-CNN-[Chocolate Detection].ipynb` Jupyter Notebook efficiently handles this step.
 
 The dataset is organized as follows:
 - **Training Set**: 832 images with 4263 annotated objects, averaging 5.12 objects per image.
@@ -138,29 +138,22 @@ The distribution of objects across the training, validation, and test sets is de
 ---
 
 ## Training the Faster R-CNN Model
-With the dataset prepared, the next step involves training the Faster R-CNN model. This process encompasses several key components, including model initialization, optimizer setup, and the training loop.
+With the dataset prepared, the next step involves training the Faster R-CNN model. The model is initialized with a ResNet-50 backbone, pre-trained on the COCO dataset. This initialization leverages transfer learning, allowing the model to benefit from features learned on a large and diverse dataset. The final layer of the model is modified to output predictions for the nine classes in our dataset (eight chocolate types plus the background class). Also, an optimizer is required to update the model parameters based on the computed gradients during backpropagation. For this, the Stochastic Gradient Descent (SGD) optimizer was used with a learning rate of 0.005, momentum of 0.9, and weight decay of 0.0005. These hyperparameters are chosen to balance the speed of convergence with the stability of the training process.
 
-### Model Initialization
-The Faster R-CNN model is initialized with a ResNet-50 backbone, pre-trained on the COCO dataset. This initialization leverages transfer learning, allowing the model to benefit from features learned on a large and diverse dataset. The final layer of the model is modified to output predictions for the nine classes in our dataset (eight chocolate types plus the background class).
+To dynamically adjust the learning rate during training, a learning rate scheduler is employed. The scheduler reduces the learning rate by a factor of 0.1 every three epochs, allowing the model to fine-tune its weights more precisely in later stages of training.
 
-### Optimizer and Learning Rate Scheduler
-An optimizer is required to update the model parameters based on the computed gradients during backpropagation. For this task, we use the Stochastic Gradient Descent (SGD) optimizer with a learning rate of 0.005, momentum of 0.9, and weight decay of 0.0005. These hyperparameters are chosen to balance the speed of convergence with the stability of the training process.
-
-To dynamically adjust the learning rate during training, a learning rate scheduler is employed. The scheduler reduces the learning rate by a factor of 10 every three epochs, allowing the model to fine-tune its weights more precisely in later stages of training.
-
-### Training Loop
-The training loop iterates over the dataset for a specified number of epochs (in this case, ten). During each epoch, the model is trained on the training set and evaluated on the validation set. Key steps in the training loop include:
+The training loop iterates over the dataset for a specified number of epochs. During each epoch, the model is trained on the training set and evaluated on the validation set. Key steps in the training loop include:
 
 1. **Forward Pass**: The input images are fed into the model to obtain predictions, including class labels and bounding box coordinates.
-2
-
-. **Loss Computation**: The loss function calculates the difference between the predicted and ground truth values for both classification and bounding box regression. The total loss is a weighted sum of these components.
-3. **Backpropagation**: The gradients of the loss with respect to the model parameters are computed and propagated backward through the network.
+2. **Loss Computation**: The loss function calculates the difference between the predicted and ground truth values for both classification and bounding box regression. The total loss is a weighted sum of these components.
+3. **Backpropagation**: The gradients of the loss concerning the model parameters are computed and propagated backward through the network.
 4. **Parameter Update**: The optimizer updates the model parameters based on the computed gradients.
 5. **Learning Rate Adjustment**: The learning rate scheduler adjusts the learning rate according to the predefined schedule.
-6. **Checkpointing**: The model's state is periodically saved to disk, allowing for resumption of training in case of interruptions.
+6. **Checkpointing**: The model's state is periodically saved to disk, allowing for the resumption of training in case of interruptions.
 
-Throughout the training process, metrics such as loss, accuracy, and mean Average Precision (mAP) are tracked to monitor the model's performance.
+Throughout the training process, metrics such as loss, accuracy, and mean Average Precision (mAP) are tracked to monitor the model's performance. The **Training Phase** section in the `Faster R-CNN-[Chocolate Detection].ipynb` Jupyter Notebook efficiently handles this step.
+
+---
 
 ## Evaluation of the Faster R-CNN Model
 After training, the Faster R-CNN model is evaluated on the test set to assess its performance. The evaluation process involves calculating key metrics, including precision, recall, and mAP. These metrics provide insights into the model's ability to accurately detect and classify objects in new images.

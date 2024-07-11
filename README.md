@@ -115,14 +115,12 @@ The dataset is organized as follows:
 - **Validation Set**: 208 images with 761 objects, averaging 3.66 objects per image.
 - **Test Set**: 260 images with 940 objects, averaging 3.62 objects per image.
 
-### Dataset Statistics
-
 | Set        | Total Images | Total Objects | Avg. Objects/Image |
 |------------|--------------|---------------|--------------------|
 | Train      | 832          | 4263          | 5.12               |
 | Validation | 208          | 761           | 3.66               |
 | Test       | 260          | 940           | 3.62               |
-| Overall    | 1300         | 5964          | 4.59               |
+| **Overall**| **1300**     | **5964**      | **4.59**           |
 
 The distribution of objects across the training, validation, and test sets is detailed below:
 

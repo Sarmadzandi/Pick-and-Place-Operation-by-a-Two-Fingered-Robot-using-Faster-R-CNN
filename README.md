@@ -191,7 +191,7 @@ The Delta Parallel Robot (DPR) workspace (shown in the figure below), consists o
     </tr>
     <tr>
       <td>
-        Delta Parallel Robot and 2-Fingered Gripper - Human and Robot Interaction Laboratory
+        Delta Parallel Robot and Two-Fingered Gripper - Human and Robot Interaction Lab
         <a href="https://taarlab.com/" target="_blank">(TaarLab)</a>, University of Tehran.
       </td>
     </tr>

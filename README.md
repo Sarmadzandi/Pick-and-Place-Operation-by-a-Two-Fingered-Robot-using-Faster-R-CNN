@@ -154,18 +154,7 @@ Throughout the training process, metrics such as loss, accuracy, and mean Averag
 ---
 
 ## Evaluation of the Faster R-CNN Model
-After training, the Faster R-CNN model is evaluated on the test set to assess its performance. The evaluation process involves calculating key metrics, including precision, recall, and mAP. These metrics provide insights into the model's ability to accurately detect and classify objects in new images.
-
-### Non-Maximum Suppression (NMS)
-Non-Maximum Suppression (NMS) is a crucial post-processing step applied during evaluation. It aims to eliminate redundant bounding boxes that overlap significantly with each other. NMS retains only the bounding box with the highest confidence score, thus improving the precision of the model's predictions.
-
-### Precision, Recall, and mAP
-- **Precision**: The ratio of true positive detections to the total number of detections. It measures the accuracy of the model in identifying true objects without false positives.
-- **Recall**: The ratio of true positive detections to the total number of ground truth objects. It measures the model's ability to detect all objects in the image.
-- **Mean Average Precision (mAP)**: The average of the precision values across all classes and IoU thresholds. It provides a comprehensive measure of the model's overall performance.
-
-## Conclusion
-Faster R-CNN offers a powerful and efficient solution for object detection tasks, combining region proposal networks with Fast R-CNN to achieve high accuracy. Its robust architecture, combined with meticulous data preparation and training processes, ensures reliable performance across diverse applications, such as automated chocolate packaging systems.
+After training,...
 
 ---
 

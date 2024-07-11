@@ -32,7 +32,7 @@ This project aims to use the Faster R-CNN object detection model for the Food Pa
 ## Data Collection and Pre-Processing
 
 - **Image Collection**: Data consisting of raw images of chocolates from six different brands with varying shapes were captured using an [ODROID USB CAM 720P HD](https://en.odroid.se/products/usb-kamera-720p) camera mounted on a robotic arm. The camera has a resolution of $1280 \times 720$, and the RGB images are saved in JPEG format. All chocolates were placed on a consistent background to ensure the model focused only on the target objects.
-  > The [Raw-Images](https://github.com/Sarmadzandi/Faster-R-CNN/tree/main/Raw-Images) folder includes some examples of the original, unprocessed raw images. 
+  > The [Raw-Images](https://github.com/Sarmadzandi/Faster-R-CNN/tree/main/Raw-Images) folder includes some samples of the original, unprocessed raw images. 
 
 - **Pre-processing**: Raw images were pre-processed using the following techniques:
     - **Resizing:** Images are resized to $800 \times 600$ pixels.

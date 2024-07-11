@@ -225,4 +225,4 @@ The initial setup includes a partially filled box in a random position and orien
   
 ## Acknowledgments
 
-- Special thanks to [Prof. Tale Masouleh](https://scholar.google.com/citations?hl=es&user=gkiFy20AAAAJ&view_op=list_works&sortby=pubdate) for his valuable guidance and to the members of the Taarlab laboratory for their support throughout this research project.
+Special thanks to [Prof. Tale Masouleh](https://scholar.google.com/citations?hl=es&user=gkiFy20AAAAJ&view_op=list_works&sortby=pubdate) for his valuable guidance and to the members of the Taarlab laboratory for their support throughout this research project.

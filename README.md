@@ -153,23 +153,8 @@ The initial setup includes a partially filled box in a random position and orien
 
 ---
 
-### Training the Model
 
-1. **Prepare the Dataset**: Ensure your dataset is organized as described in the [Data Preparation](#data-preparation) section.
-2. 
-
-### Testing and Evaluation of the Model
-
-1. **Load Trained Model**: Use the trained model saved during the training phase.
-2. **Test on New Images**: Run the notebook cells designed for testing and visualize the results.
-3. 
-
-## Results
-
-- images ...
-- tables ...
-- ...
-
+---
 
 ## Contribute
 
@@ -178,8 +163,8 @@ The initial setup includes a partially filled box in a random position and orien
 
 ## License
 
-.....
-
+- Write here
+  
 ## Acknowledgments
 
-- Special thanks to Dr. Tale Masouleh as the advisor and the Taarlab laboratory members for their guidance and support.
+- Special thanks to [Prof. Tale Masouleh](https://scholar.google.com/citations?hl=es&user=gkiFy20AAAAJ&view_op=list_works&sortby=pubdate) for his valuable guidance and to the members of the Taarlab laboratory for their support throughout this research project.

@@ -6,8 +6,9 @@
 3. [Tools and Libraries](#tools-and-libraries)
 4. [Data Collection and Pre-Processing](#data-collection-and-pre-processing)
 5. [Faster R-CNN Model](#faster-r-cnn-model)
-6. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
-7. [Acknowledgments](#acknowledgments)
+6. [Data Preparation for Model Training](#data-preparation-for-model-training)
+7. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
+8. [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
@@ -106,16 +107,15 @@ This architecture is visually illustrated in the figure below, and it successful
 ---
 
 ## Data Preparation for Model Training
-To train the Faster R-CNN model, it is essential to prepare the dataset meticulously. This involves organizing the data into a format that the model can understand and process efficiently. Below, we outline the steps involved in preparing the data for training the Faster R-CNN model.
 
-### Dataset Organization
-The dataset for training the Faster R-CNN model is divided into three subsets: training, validation, and test sets. Each subset contains images and corresponding annotations, which define the bounding boxes and labels for the objects present in the images. The dataset is organized as follows:
+The dataset for training the Faster R-CNN model is divided into three subsets: training, validation, and test sets. Each subset which makes up 60%, 20%, and 20% of the dataset, respectively, contains images and corresponding annotations, which define the bounding boxes and labels for the objects present in the images. 
 
+The dataset is organized as follows:
 - **Training Set**: 832 images with 4263 annotated objects, averaging 5.12 objects per image.
 - **Validation Set**: 208 images with 761 objects, averaging 3.66 objects per image.
 - **Test Set**: 260 images with 940 objects, averaging 3.62 objects per image.
 
-#### Dataset Statistics
+### Dataset Statistics
 
 | Set        | Total Images | Total Objects | Avg. Objects/Image |
 |------------|--------------|---------------|--------------------|
@@ -124,8 +124,7 @@ The dataset for training the Faster R-CNN model is divided into three subsets: t
 | Test       | 260          | 940           | 3.62               |
 | Overall    | 1300         | 5964          | 4.59               |
 
-#### Object Distribution
-The dataset includes various types of chocolates, each represented by a different label. The distribution of objects across the training, validation, and test sets is detailed below:
+The distribution of objects across the training, validation, and test sets is detailed below:
 
 | Object          | Train (%) | Validation (%) | Test (%) | Overall (%)  |
 |-----------------|-----------|----------------|----------|--------------|

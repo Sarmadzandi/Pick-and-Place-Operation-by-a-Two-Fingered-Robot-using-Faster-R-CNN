@@ -2,21 +2,17 @@
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
-2. [Contents](#contents)
-3. [Tools and Libraries](#tools-and-libraries)
-4. [Data Collection and Pre-Processing](#data-collection-and-pre-processing)
-5. [Faster R-CNN Model](#faster-r-cnn-model)
-6. [Data Preparation for Model Training](#data-preparation-for-model-training)
+2. [Tools and Libraries](#tools-and-libraries)
+3. [Data Collection and Pre-Processing](#data-collection-and-pre-processing)
+4. [Faster R-CNN Model](#faster-r-cnn-model)
+5. [Data Preparation for Model Training](#data-preparation-for-model-training)
+6. [Training the Faster R-CNN Model](#training-the-faster-r-cnn-model)
 7. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
 8. [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
 This project aims to use the Faster R-CNN object detection model for the Food Packaging Process, with a specific focus on packaging various types of chocolates in a factory's production line. The objective is to identify chocolates in images captured by a camera to automate the pick-and-place task using a two-fingered gripper and a delta parallel robot. The primary aim is to enhance the precision and efficacy of detecting and packaging vulnerable soft chocolates during the pick-and-place operation without causing any damage while maintaining stringent hygiene standards and reducing the need for manual labor.
-
-## Contents
-
-- `Faster R-CNN-[Chocolate Detection].ipynb`: Jupyter notebook containing the implementation of the Faster R-CNN model for chocolate detection.
 
 ---
 
@@ -138,6 +134,7 @@ The distribution of objects across the training, validation, and test sets is de
 ---
 
 ## Training the Faster R-CNN Model
+
 With the dataset prepared, the next step involves training the Faster R-CNN model. The model is initialized with a ResNet-50 backbone, pre-trained on the COCO dataset. This initialization leverages transfer learning, allowing the model to benefit from features learned on a large and diverse dataset. The final layer of the model is modified to output predictions for the nine classes in our dataset (eight chocolate types plus the background class). Also, an optimizer is required to update the model parameters based on the computed gradients during backpropagation. For this, the Stochastic Gradient Descent (SGD) optimizer was used with a learning rate of 0.005, momentum of 0.9, and weight decay of 0.0005. These hyperparameters are chosen to balance the speed of convergence with the stability of the training process.
 
 To dynamically adjust the learning rate during training, a learning rate scheduler is employed. The scheduler reduces the learning rate by a factor of 0.1 every three epochs, allowing the model to fine-tune its weights more precisely in later stages of training.
@@ -233,9 +230,6 @@ The integration of this gripper with the DPR enables coordinated object manipula
 ## The Pick-and-place Experimental Setup
 
 The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace. The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial or cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be transmitted wirelessly to the robot using the Transmission Control Protocol (TCP).
-
----
-
 
 ---
   

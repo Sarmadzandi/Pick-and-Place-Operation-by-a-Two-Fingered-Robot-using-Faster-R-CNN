@@ -8,7 +8,8 @@
 5. [Data Preparation for Model Training](#data-preparation-for-model-training)
 6. [Training the Faster R-CNN Model](#training-the-faster-r-cnn-model)
 7. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
-8. [Acknowledgments](#acknowledgments)
+8. [Practical Test Results](#practical-test-results)
+9. [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
@@ -219,7 +220,43 @@ The integration of this gripper with the DPR enables coordinated object manipula
 
 ## The Pick-and-place Experimental Setup
 
-The initial setup includes a partially filled box in a random position and orientation with scattered pieces of chocolate, all placed in the Delta Parallel Robot workspace. The robot’s movement is directed by classical trajectory planning methods, such as the 4-5-6-7 interpolating polynomial or cubic spline. To allow the robot to interact with target objects, a two-fingered gripper is mounted on the end-effector. The gripper will be controlled with a data cable connected to an Arduino kit. The generated results will be transmitted wirelessly to the robot using the Transmission Control Protocol (TCP).
+The initial setup includes a partially filled box of various brands of chocolates, each placed in a separate section of the box, along with several randomly positioned and oriented chocolates placed within the Delta Parallel Robot workspace. The process begins with image analysis using a Faster R-CNN object detection model to identify chocolates, their positions, and appropriate placement locations.
+
+The model outputs bounding boxes and labels for each chocolate, both inside and outside the box. To precisely pick and place each chocolate in the robot's workspace, the central coordinates of the objects are calculated from the center of the bounding boxes detected by the model. The central coordinates of each chocolate are converted into robot-readable coordinates through a calibration process, transforming model output coordinates into real-world coordinates.  This calibration process includes:
+
+1. Resetting the DPR to capture a reference image, to allow the Faster R-CNN model to identify the central coordinates of chocolates outside the box.
+2. Creating a transformation matrix to align image coordinates with real-world coordinates to ensure precise robot movement. 
+
+The robot's movement is guided by classical trajectory planning methods such as the 4-5-6-7 interpolating polynomial or cubic spline. The results are transmitted wirelessly to the robot via Transmission Control Protocol (TCP). A two-fingered gripper, mounted on the end-effector and controlled via a data cable connected to an Arduino kit, interacts with the objects. The grasping force is gentle enough to avoid damaging the chocolates. Finally, the robot moves to the desired placement location based on the central coordinates of the corresponding chocolates inside the box. 
+
+This streamlined approach enables efficient sorting and arranging of chocolates into their designated box sections. The entire process, from object detection to the practical test of chocolate arrangement, is illustrated in the following figure.
+
+![img6](https://github.com/user-attachments/assets/59ea8402-2221-4b45-847d-1838455e95d8)
+
+---
+
+## Practical Test Results
+
+To evaluate the integration of the Faster R-CNN model with the Two-Fingered Gripper and Delta Robot for pick-and-place operations in a practical test, four different scenarios were defined, and each scenario was tested five times. The results are presented in the tables below.
+
+*Object Detection Results for Various Scenarios in the Practical Test*
+| Scenario | Object Detection Result |
+|----------|--------------------------|
+| 1        | ![Scenario 1](https://github.com/user-attachments/assets/53e56232-276f-484a-a266-eed5e0019e7f)  |
+| 2        | ![Scenario 2](https://github.com/user-attachments/assets/2b6865ab-fc82-45c2-8b83-559bc6f765f2)  |
+| 3        | ![Scenario 3](https://github.com/user-attachments/assets/c522d533-e725-459b-ac91-96a7e6dd56ab)  |
+| 4        | ![Scenario 4](https://github.com/user-attachments/assets/5bcef8c8-6566-497d-b065-d8da390d8028)  |
+
+*Success Rates in Object Detection and Pick-and-place Operation for Various Scenarios in the Practical Test*
+| Scenario | Total Chocolates Outside Box | Successful Detections (Object Label) | Successful Detections (Object Center Coordinates) | Object Detection Success Rate | Total Successful Picks by Robot | Total Successful Places by Robot | Pick-and-place Success Rate |
+|-------------------------------|------------------------------|--------------------------------------|----------------------------------------------|-----------------------------|-------------------------------|------------------------------|--------------------------------|
+| 1                             | 8                            | 8                                    | 8                                            | 100%                        | 8                             | 8                            | 100%                           |
+| 2                             | 8                            | 8                                    | 8                                            | 100%                        | 8                             | 7                            | 87.50%                         |
+| 3                             | 6                            | 6                                    | 6                                            | 100%                        | 6                             | 6                            | 100%                           |
+| 4                             | 6                            | 6                                    | 6                                            | 100%                        | 6                             | 6                            | 100%                           |
+| **Total**                     | **28**                       | **28**                               | **28**                                       | **100%**                    | **28**                        | **27**                       | **96.43%**                     |
+
+The practical tests showed that the Faster R-CNN model achieved high accuracy and efficiency in the picking and placing of edible objects by the robot. Remarkably, the model achieved a **96.43% success rate** in picking and placing chocolates, with **100% accuracy** in detecting their labels and central coordinates. This performance remained consistent despite varying lighting conditions and different scenario complexities.
 
 ---
   

@@ -1,5 +1,10 @@
 # Pick-and-Place Operation by a Two-Fingered Robot using Faster R-CNN
 
+![GitHub stars](https://img.shields.io/github/stars/sarmadzandi/Pick-and-Place-Operation-by-a-Two-Fingered-Robot-using-Faster-R-CNN)
+![GitHub forks](https://img.shields.io/github/forks/sarmadzandi/Pick-and-Place-Operation-by-a-Two-Fingered-Robot-using-Faster-R-CNN)
+![GitHub issues](https://img.shields.io/github/issues/sarmadzandi/Pick-and-Place-Operation-by-a-Two-Fingered-Robot-using-Faster-R-CNN)
+![GitHub license](https://img.shields.io/github/license/sarmadzandi/Pick-and-Place-Operation-by-a-Two-Fingered-Robot-using-Faster-R-CNN)
+
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Tools and Libraries](#tools-and-libraries)

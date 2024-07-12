@@ -7,9 +7,10 @@
 4. [Faster R-CNN Model](#faster-r-cnn-model)
 5. [Data Preparation for Model Training](#data-preparation-for-model-training)
 6. [Training the Faster R-CNN Model](#training-the-faster-r-cnn-model)
-7. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
-8. [Practical Test Results](#practical-test-results)
-9. [Acknowledgments](#acknowledgments)
+7. [Evaluation of the Faster R-CNN Model](#evaluation-of-the-faster-r-cnn-model)
+8. [The Pick-and-place Experimental Setup](#the-pick-and-place-experimental-setup)
+9. [Practical Test Results](#practical-test-results)
+10. [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
@@ -155,7 +156,68 @@ Throughout the training process, metrics such as loss, accuracy, and mean Averag
 ---
 
 ## Evaluation of the Faster R-CNN Model
-After training,...
+
+To evaluate the model's performance, the test dataset was utilized. Various metrics were monitored throughout the evaluation process to assess the model's effectiveness. Additionally, a post-processing technique called Non-Maximum Suppression (NMS) was applied. NMS helps eliminate duplicate bounding boxes with significant overlap, retaining only the highest confidence ones, thereby enhancing the model's prediction accuracy. The evaluation metrics for the Faster R-CNN model include:
+
+1. **Precision**: Ratio of correctly detected instances to total detected instances.
+
+$$
+Precision = \frac{True Positives}{(True Positives + False Positives)}
+$$
+
+2. **Recall**: Ratio of correctly detected instances to total instances of the target class. indicating the model's ability to detect all objects in the image.
+
+$$
+Recall = \frac{True Positives}{(True Positives + False Negatives)}
+$$
+
+3. **F1 Score**: Harmonic mean of precision and recall, providing a single metric to balance both.
+   
+$$
+F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+$$
+   
+4. **Intersection over Union (IoU)**: Measures the overlap between two bounding boxes. During the evaluation, an IoU threshold was used in the NMS process to decide whether a bounding box should be considered a valid detection or suppressed. For our evaluation, we set the IoU threshold at 0.75.
+   
+$$
+IoU = \frac{Area of Overlap}{Area of Union}
+$$
+
+5. **Mean Average Precision (mAP)**: Average precision across all classes and IoU thresholds. Provides a comprehensive measure of the model's overall performance.
+
+$$
+mAP = \frac{1}{n}\sum_{i=1}^{n} AP_i
+$$
+   
+6. **Confusion Matrix**: Detailed analysis of model performance for each class.
+
+7. **Practical Test Success Rate**: Percentage of successful pick-and-place operations performed by the robot.
+
+### Model Performance in Precision, Recall, F1 Score, mAP, and Confusion Matrix
+
+The figures below illustrate key metrics such as precision, recall, F1 score, and the Confusion Matrix for all chocolate labels. The Faster R-CNN model achieved a perfect score of 1.00 across all categories, demonstrating its exceptional accuracy in identifying and classifying chocolate labels. Additionally, the mean average precision also reached 1.00, underscoring the model's precise detection capabilities for all chocolates. The Confusion Matrix further confirms the model's outstanding performance, with no errors in false positives or false negatives. This high accuracy is the result of detailed data preprocessing, proper data preparation, logical and diverse data augmentation, careful feature selection, optimal parameter tuning, and extensive training of the Faster R-CNN object detection model.
+
+| ![img8](https://github.com/user-attachments/assets/9d4c7dc2-8e3d-40d8-9893-1ad31e712b0f)  | ![img7](https://github.com/user-attachments/assets/8d32d373-042f-4727-96c9-055557e157c6) |
+|---|---|
+| Confusion matrix for Faster R-CNN model results in classifying chocolate labels. | Metrics of precision, recall, and F1 score for each chocolate class. |
+
+#### Precision-Recall Curve and Receiver Operating Characteristic (ROC) Curve
+
+Figure \ref{fig:PR} depicts the precision-recall curves for each class separately, showcasing the model's capability to accurately detect and distinguish different chocolate labels. All classes achieved a precise score of 1.0 for both precision and recall, meaning the model had no false positives or false negatives. The average precision (AP) values for all classes were also 1.0, indicating the model's flawless performance in detecting each class.
+
+![Precision-Recall Curve](img/chapter5/img12.png)
+![ROC Curve](img/chapter5/img11.png)
+*Figure 2: Precision-Recall Curve and Receiver Operating Characteristic (ROC) Curve for each object label.*
+
+The ROC curve, shown in Figure \ref{fig:ROC}, graphically represents a classification model's performance at various threshold settings. The closer the curve is to the vertical axis and the point (0.00, 1.00), the better the model's performance, with our evaluation showing zero false positive rates. The Area Under the Curve (AUC) measures the ROC curve area, serving as an index for evaluating classification models. The AUC value ranges from 0 to 1, with higher values indicating better model performance. In our evaluation, the AUC for each class was 1.00, demonstrating the model's excellent performance in classifying classes.
+
+#### Overlap and Detection Score Distribution
+
+Figures \ref{fig:DSD} and \ref{fig:IOUD} illustrate the distribution of IoU values and confidence scores, respectively, which are key metrics for evaluating object detection models. The first chart shows the IoU distribution, highlighting the overlap between predicted and actual bounding boxes for chocolates. Most IoU values are close to 1.0, indicating significant overlap and high model accuracy in object detection. The second chart shows the detection score distribution, representing the model's confidence in its predictions. Most detection scores are also close to 1.0, indicating high confidence in the model's predictions. Overall, the IoU and detection score distributions confirm the model's high accuracy and confidence in detecting and classifying various chocolates.
+
+![Detection Score Distribution](img/chapter5/img14.png)
+![IoU Distribution](img/chapter5/img13.png)
+*Figure 3: IoU distribution of bounding boxes and detection score distribution for model predictions.*
 
 ---
 

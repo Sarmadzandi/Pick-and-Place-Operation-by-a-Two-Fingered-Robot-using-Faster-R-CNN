@@ -193,31 +193,37 @@ $$
 
 7. **Practical Test Success Rate**: Percentage of successful pick-and-place operations performed by the robot.
 
-### Model Performance in Precision, Recall, F1 Score, mAP, and Confusion Matrix
+The **Evaluation Phase** section in the `Faster R-CNN-[Chocolate Detection].ipynb` Jupyter Notebook efficiently handles this step.
 
-The figures below illustrate key metrics such as precision, recall, F1 score, and the Confusion Matrix for all chocolate labels. The Faster R-CNN model achieved a perfect score of 1.00 across all categories, demonstrating its exceptional accuracy in identifying and classifying chocolate labels. Additionally, the mean average precision also reached 1.00, underscoring the model's precise detection capabilities for all chocolates. The Confusion Matrix further confirms the model's outstanding performance, with no errors in false positives or false negatives. This high accuracy is the result of detailed data preprocessing, proper data preparation, logical and diverse data augmentation, careful feature selection, optimal parameter tuning, and extensive training of the Faster R-CNN object detection model.
+### Precision, Recall, F1 Score, mAP, and Confusion Matrix
+Our Faster R-CNN model achieved perfect scores across all categories:
+- Precision: 1.00
+- Recall: 1.00
+- F1 Score: 1.00
+- Mean Average Precision (mAP): 1.00
 
-| ![img8](https://github.com/user-attachments/assets/9d4c7dc2-8e3d-40d8-9893-1ad31e712b0f)  | ![img7](https://github.com/user-attachments/assets/8d32d373-042f-4727-96c9-055557e157c6) |
-|---|---|
-| Confusion matrix for Faster R-CNN model results in classifying chocolate labels. | Metrics of precision, recall, and F1 score for each chocolate class. |
+The confusion matrix confirmed zero errors in false positives or false negatives, underlining the model's outstanding performance.
 
-#### Precision-Recall Curve and Receiver Operating Characteristic (ROC) Curve
+![Confusion Matrix and Metrics](https://github.com/user-attachments/assets/08de4249-cc32-4bac-8a8e-ae7e0135f384)
+*Confusion matrix for Faster R-CNN model results in classifying chocolate labels and Metrics of precision, recall, and F1 score for each chocolate class.*
 
-Figure \ref{fig:PR} depicts the precision-recall curves for each class separately, showcasing the model's capability to accurately detect and distinguish different chocolate labels. All classes achieved a precise score of 1.0 for both precision and recall, meaning the model had no false positives or false negatives. The average precision (AP) values for all classes were also 1.0, indicating the model's flawless performance in detecting each class.
+### Precision-Recall and Receiver Operating Characteristic (ROC) Curves
+The model's performance is further illustrated through Precision-Recall and ROC curves:
 
-![Precision-Recall Curve](img/chapter5/img12.png)
-![ROC Curve](img/chapter5/img11.png)
-*Figure 2: Precision-Recall Curve and Receiver Operating Characteristic (ROC) Curve for each object label.*
+- **Precision-Recall Curves:** All classes achieved perfect scores of 1.0 for both precision and recall, indicating no false positives or false negatives.
+- **ROC Curves:** The Area Under the Curve (AUC) for each class was 1.00, demonstrating outstanding classification performance.
 
-The ROC curve, shown in Figure \ref{fig:ROC}, graphically represents a classification model's performance at various threshold settings. The closer the curve is to the vertical axis and the point (0.00, 1.00), the better the model's performance, with our evaluation showing zero false positive rates. The Area Under the Curve (AUC) measures the ROC curve area, serving as an index for evaluating classification models. The AUC value ranges from 0 to 1, with higher values indicating better model performance. In our evaluation, the AUC for each class was 1.00, demonstrating the model's excellent performance in classifying classes.
+![Precision-Recall and ROC Curves](https://github.com/user-attachments/assets/d3e049a7-9c80-46c2-a8f2-d52b73ac5ab5)
+*Precision-Recall Curve and Receiver Operating Characteristic (ROC) Curve for each object label.*
 
-#### Overlap and Detection Score Distribution
+### IoU and Detection Score Distribution
+The model's accuracy is further validated by the distribution of Intersection over Union (IoU) values and confidence scores:
 
-Figures \ref{fig:DSD} and \ref{fig:IOUD} illustrate the distribution of IoU values and confidence scores, respectively, which are key metrics for evaluating object detection models. The first chart shows the IoU distribution, highlighting the overlap between predicted and actual bounding boxes for chocolates. Most IoU values are close to 1.0, indicating significant overlap and high model accuracy in object detection. The second chart shows the detection score distribution, representing the model's confidence in its predictions. Most detection scores are also close to 1.0, indicating high confidence in the model's predictions. Overall, the IoU and detection score distributions confirm the model's high accuracy and confidence in detecting and classifying various chocolates.
+- **IoU Distribution:** Most values are near 1.0, indicating substantial overlap between predicted and actual bounding boxes.
+- **Detection Score Distribution:** The majority of scores are close to 1.0, demonstrating high confidence in the model's predictions.
 
-![Detection Score Distribution](img/chapter5/img14.png)
-![IoU Distribution](img/chapter5/img13.png)
-*Figure 3: IoU distribution of bounding boxes and detection score distribution for model predictions.*
+![IoU and Detection Score Distribution](https://github.com/user-attachments/assets/f42f180d-da25-4458-8214-a190971ec70b)
+*IoU distribution of bounding boxes and detection score distribution for model predictions.*
 
 ---
 

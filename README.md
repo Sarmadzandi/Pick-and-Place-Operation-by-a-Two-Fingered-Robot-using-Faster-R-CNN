@@ -239,7 +239,7 @@ This streamlined approach enables efficient sorting and arranging of chocolates 
 
 To evaluate the integration of the Faster R-CNN model with the Two-Fingered Gripper and Delta Robot for pick-and-place operations in a practical test, four different scenarios were defined, and each scenario was tested five times. The results are presented in the tables below.
 
-*Object Detection Results for Various Scenarios in the Practical Test*
+*Object Detection Results for Various Scenarios in the Practical Test.*
 | Scenario | Object Detection Result |
 |----------|--------------------------|
 | 1        | ![Scenario 1](https://github.com/user-attachments/assets/53e56232-276f-484a-a266-eed5e0019e7f)  |
@@ -247,7 +247,7 @@ To evaluate the integration of the Faster R-CNN model with the Two-Fingered Grip
 | 3        | ![Scenario 3](https://github.com/user-attachments/assets/c522d533-e725-459b-ac91-96a7e6dd56ab)  |
 | 4        | ![Scenario 4](https://github.com/user-attachments/assets/5bcef8c8-6566-497d-b065-d8da390d8028)  |
 
-*Success Rates in Object Detection and Pick-and-place Operation for Various Scenarios in the Practical Test*
+*Success Rates in Object Detection and Pick-and-place Operation for Various Scenarios in the Practical Test.*
 | Scenario | Total Chocolates Outside Box | Successful Detections (Object Label) | Successful Detections (Object Center Coordinates) | Object Detection Success Rate | Total Successful Picks by Robot | Total Successful Places by Robot | Pick-and-place Success Rate |
 |-------------------------------|------------------------------|--------------------------------------|----------------------------------------------|-----------------------------|-------------------------------|------------------------------|--------------------------------|
 | 1                             | 8                            | 8                                    | 8                                            | 100%                        | 8                             | 8                            | 100%                           |
@@ -262,4 +262,4 @@ The practical tests showed that the Faster R-CNN model achieved high accuracy an
   
 ## Acknowledgments
 
-Special thanks to [Prof. Tale Masouleh](https://scholar.google.com/citations?hl=es&user=gkiFy20AAAAJ&view_op=list_works&sortby=pubdate) for his valuable guidance and to the members of the Taarlab laboratory for their support throughout this research project.
+Special thanks to [Prof. Tale Masouleh](https://scholar.google.com/citations?hl=es&user=gkiFy20AAAAJ&view_op=list_works&sortby=pubdate) for his valuable guidance and to the [Taarlab](https://taarlab.com/) laboratory members for their support throughout this research project.

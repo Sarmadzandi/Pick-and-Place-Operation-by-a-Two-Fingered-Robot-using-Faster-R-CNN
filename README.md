@@ -145,7 +145,7 @@ The distribution of objects across the training, validation, and test sets is de
 
 With the dataset prepared, the next step involves training the Faster R-CNN model. The model is initialized with a ResNet-50 backbone, pre-trained on the COCO dataset. This initialization leverages transfer learning, allowing the model to benefit from features learned on a large and diverse dataset. The final layer of the model is modified to output predictions for the nine classes in our dataset (eight chocolate types plus the background class). Also, an optimizer is required to update the model parameters based on the computed gradients during backpropagation. For this, the Stochastic Gradient Descent (SGD) optimizer was used with a learning rate of 0.005, momentum of 0.9, and weight decay of 0.0005. These hyperparameters are chosen to balance the speed of convergence with the stability of the training process.
 
-To dynamically adjust the learning rate during training, a learning rate scheduler is employed. The scheduler reduces the learning rate by a factor of 0.1 every three epochs, allowing the model to fine-tune its weights more precisely in later stages of training.
+A learning rate scheduler is employed to adjust the learning rate dynamically during training. The scheduler reduces the learning rate by a factor of 0.1 every three epochs, allowing the model to fine-tune its weights more precisely in later stages of training.
 
 The training loop iterates over the dataset for a specified number of epochs. During each epoch, the model is trained on the training set and evaluated on the validation set. Key steps in the training loop include:
 
@@ -162,7 +162,7 @@ Throughout the training process, metrics such as loss, accuracy, and mean Averag
 
 ## Evaluation of the Faster R-CNN Model
 
-To evaluate the model's performance, the test dataset was utilized. Various metrics were monitored throughout the evaluation process to assess the model's effectiveness. Additionally, a post-processing technique called Non-Maximum Suppression (NMS) was applied. NMS helps eliminate duplicate bounding boxes with significant overlap, retaining only the highest confidence ones, thereby enhancing the model's prediction accuracy. The evaluation metrics for the Faster R-CNN model include:
+The test dataset was utilized to evaluate the model's performance. Various metrics were monitored throughout the evaluation process to assess the model's effectiveness. Additionally, a post-processing technique called Non-Maximum Suppression (NMS) was applied. NMS helps eliminate duplicate bounding boxes with significant overlap, retaining only the highest confidence ones, thereby enhancing the model's prediction accuracy. The evaluation metrics for the Faster R-CNN model include:
 
 1. **Precision**: Ratio of correctly detected instances to total detected instances.
 
